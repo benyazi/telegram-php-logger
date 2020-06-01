@@ -85,7 +85,11 @@ class Logger
         $formatted_hashtags = [];
         foreach ($hashtags as $hashtag) {
             if(mb_strpos($hashtag, '#') !== 0) {
-                $hashtag = '#' . $hashtag;
+                if($this->parseMode == self::PARSE_MODE_HTML) {
+                    $hashtag = '#' . $hashtag;
+                } else {
+                    $hashtag = '\#' . $hashtag;
+                }
             }
             $formatted_hashtags[] = $hashtag;
         }
@@ -99,7 +103,11 @@ class Logger
      */
     private function getDataString($data)
     {
-        return '```' . print_r($data, true) . '```';
+        if($this->parseMode == self::PARSE_MODE_HTML) {
+            return '<pre>' . print_r($data, true) . '</pre>';
+        } else {
+            return '```' . print_r($data, true) . '```';
+        }
     }
 
     /**
