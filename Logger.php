@@ -58,13 +58,9 @@ class Logger
         curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-        try {
-            $result = curl_exec($ch);
-            curl_close($ch);
-        } catch (\Exception $e) {
-
-        }
-        return true;
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return $result;
     }
 
     /**
