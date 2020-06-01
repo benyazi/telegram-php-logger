@@ -4,10 +4,13 @@ namespace Benyazi\TelegramLog;
 class Logger
 {
     const DEFAULT_ENDPOINT = 'https://api.telegram.org';
+    const PARSE_MODE_MARKDOWN = 'Markdown';
+    const PARSE_MODE_HTML = 'HTML';
     protected $endpoint;
     protected $defaultHashTags = [];
     protected $defaultData = [];
     protected $defaultChatId;
+    protected $parseMode = self::PARSE_MODE_MARKDOWN;
     private $botKey;
 
     /**
@@ -32,6 +35,14 @@ class Logger
     }
 
     /**
+     * @param string $parse_mode
+     */
+    public function setParseMode($parse_mode)
+    {
+        $this->parseMode = $parse_mode;
+    }
+
+    /**
      * Get bot endpoint
      * @return string
      */
@@ -50,6 +61,7 @@ class Logger
         $params = [
             'chat_id' => $this->defaultChatId,
             'text' => $text,
+            'parse_mode' => $this->parseMode
         ];
         $ch = curl_init($this->getEndpoint() . '/sendMessage');
         curl_setopt($ch, CURLOPT_HEADER, false);
