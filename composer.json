@@ -1,0 +1,32 @@
+{
+  "name": "benyazi/telegram-php-log",
+  "description": "Simple telegram log",
+  "type": "library",
+  "keywords": [
+    "log",
+    "telegram"
+  ],
+  "version": "0.0.1",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sergey Klabukov",
+      "email": "yo@benyazi.ru",
+      "homepage": "https://benyazi.ru",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/benyazi/cmmt-php/issues",
+    "source": "https://github.com/benyazi/cmmt-php"
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Benyazi\\TelegramLog\\": ""
+    }
+  }
+}
